@@ -24,7 +24,7 @@ export default function DashboardPage() {
   const [autoRotate, setAutoRotate] = useState(true);
 
   const { data, error } = useSWR<Section[]>(`/api/monitors?org=${org}`, fetcher, {
-    refreshInterval: 60000, // 60s
+    refreshInterval: 60000,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
@@ -34,17 +34,14 @@ export default function DashboardPage() {
       const now = new Date();
       setTime(now.toLocaleTimeString("pt-BR", { hour12: false }));
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
     if (!autoRotate) return;
-
     const interval = setInterval(() => {
       setOrg((prev) => (prev === "corp" ? "digital" : "corp"));
-    }, 120000); // 2 min
-
+    }, 120000);
     return () => clearInterval(interval);
   }, [autoRotate]);
 
@@ -81,20 +78,22 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <div className="h-2 bg-blue-700 w-full" />
 
-      <div className="flex justify-between items-center px-12 py-6 border-b border-slate-800">
-        <div>
-          <h1 className="text-3xl font-semibold tracking-wide">Ipiranga - Monitoramento de serviços corporativos</h1>
-        </div>
-        <div className="flex gap-4">
+      {/* HEADER */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center px-6 md:px-12 py-6 border-b border-slate-800 gap-4 md:gap-0">
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-wide">
+          Ipiranga - Monitoramento de serviços corporativos
+        </h1>
+
+        <div className="flex gap-3 md:gap-4 flex-wrap">
           <button
             onClick={() => {
               setOrg("corp");
               setAutoRotate(false);
             }}
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-3 py-2 md:px-4 md:py-2 rounded-lg ${
               org === "corp" ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-400"
             }`}
           >
@@ -103,7 +102,7 @@ export default function DashboardPage() {
 
           <button
             onClick={() => setOrg("digital")}
-            className={`px-4 py-2 rounded-lg ${
+            className={`px-3 py-2 md:px-4 md:py-2 rounded-lg ${
               org === "digital" ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-400"
             }`}
           >
@@ -111,15 +110,15 @@ export default function DashboardPage() {
           </button>
         </div>
 
-        <div className="text-right">
-          <p className="text-3xl font-mono">{time}</p>
+        <div className="text-left md:text-right mt-2 md:mt-0">
+          <p className="text-2xl md:text-3xl font-mono">{time}</p>
           <p className="text-xs text-slate-500 tracking-wide">Monitoramento em tempo real</p>
         </div>
       </div>
 
       {/* GLOBAL STATUS RIBBON */}
       <div
-        className={`text-center py-3 text-sm tracking-widest font-semibold uppercase ${
+        className={`text-center py-2 md:py-3 text-sm md:text-base tracking-widest font-semibold uppercase ${
           totalAlert > 0
             ? "bg-red-600 text-white animate-pulse"
             : totalWarn > 0
@@ -131,41 +130,39 @@ export default function DashboardPage() {
       </div>
 
       {/* SUMMARY LINE */}
-      <div className="px-12 py-6 flex flex-row gap-2 text-xl tracking-wide">
-        <div className="flex-1 flex items-center gap-2 justify-center flex-row bg-emerald-500/30 rounded-xl py-5">
-          <p className="text-3xl font-bold text-emerald-400">{totalOK}</p>{" "}
-          <p className="text-sm text-white mt-1 tracking-wide">OK</p>{" "}
+      <div className="px-4 md:px-12 py-4 md:py-6 flex flex-col sm:flex-row gap-3 sm:gap-2 text-lg md:text-xl">
+        <div className="flex-1 flex items-center gap-2 justify-center flex-row bg-emerald-500/30 rounded-xl py-3 md:py-5">
+          <p className="text-2xl md:text-3xl font-bold text-emerald-400">{totalOK}</p>
+          <p className="text-sm md:text-base text-white mt-1 tracking-wide">OK</p>
         </div>
-        <div className="flex-1 flex items-center gap-2 justify-center flex-row bg-amber-500/30 rounded-xl py-5">
-          <p className="text-3xl font-bold text-amber-400">{totalWarn}</p>
-          <p className="text-sm text-white mt-1 tracking-wide">Warning</p>
+        <div className="flex-1 flex items-center gap-2 justify-center flex-row bg-amber-500/30 rounded-xl py-3 md:py-5">
+          <p className="text-2xl md:text-3xl font-bold text-amber-400">{totalWarn}</p>
+          <p className="text-sm md:text-base text-white mt-1 tracking-wide">Warning</p>
         </div>
-        <div className="flex-1 flex items-center gap-2 justify-center flex-row bg-red-500/30 rounded-xl py-5">
-          <p className="text-3xl font-bold text-red-500">{totalAlert}</p>
-          <p className="text-sm text-white mt-1 tracking-wide">Critical</p>
+        <div className="flex-1 flex items-center gap-2 justify-center flex-row bg-red-500/30 rounded-xl py-3 md:py-5">
+          <p className="text-2xl md:text-3xl font-bold text-red-500">{totalAlert}</p>
+          <p className="text-sm md:text-base text-white mt-1 tracking-wide">Critical</p>
         </div>
       </div>
 
       {/* CONTENT */}
-      <div className="flex-1 grid grid-cols-2 gap-20 px-16 pb-12">
+      <div className="flex-1 px-4 md:px-16 pb-12 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20">
         {data.map((section) => (
           <div key={section.title}>
-            <h2 className="text-2xl font-bold text-white uppercase tracking-widest mb-10 border-b border-slate-800 pb-3">
+            <h2 className="text-xl md:text-2xl font-bold text-white uppercase tracking-widest mb-6 md:mb-10 border-b border-slate-800 pb-2 md:pb-3">
               {section.title}
             </h2>
 
             {/* SERVICES */}
-            <div className="grid grid-cols-3 gap-14">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-14">
               {section.services.map((service) => (
                 <div
                   key={service.service}
-                  className="flex flex-col py-2 rounded-xl bg-slate-900 border border-slate-800 shadow-sm items-center text-center space-y-6"
+                  className="flex flex-col py-4 md:py-6 rounded-xl bg-slate-900 border border-slate-800 shadow-sm items-center text-center space-y-4 md:space-y-6"
                 >
-                  <p className="text-3xl font-semibold tracking-wide">{service.title}</p>
-
+                  <p className="text-xl md:text-3xl font-semibold tracking-wide">{service.title}</p>
                   {getIcon(service.status)}
-
-                  <p className="text-xl text-slate-400 tracking-wide">{service.alertCount} alert(s)</p>
+                  <p className="text-base md:text-xl text-slate-400 tracking-wide">{service.alertCount} alert(s)</p>
                 </div>
               ))}
             </div>
@@ -174,7 +171,7 @@ export default function DashboardPage() {
       </div>
 
       {/* FOOTER */}
-      <div className="text-right text-xs text-white px-12 py-4 border-t border-slate-800 tracking-wide">
+      <div className="text-center md:text-right text-xs md:text-sm text-white px-4 md:px-12 py-4 border-t border-slate-800 tracking-wide">
         Auto refresh every 30 seconds
       </div>
     </div>
