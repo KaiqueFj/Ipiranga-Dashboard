@@ -18,7 +18,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
     ],
   },
   {
-    sectionTitle: "Overview - Plataformas e Parceiros dos serviços digitais",
+    sectionTitle: "Overview - Plataformas e Serviços digitais",
     services: [
       { service: "Portal Ipiranga", title: "PortalRI", query: '"[Ipiranga]" muted:false tag:("service:PortalRi")' },
       { service: "Ipiranga Top", title: "Ipiranga Top", query: '"[Ipiranga]" muted:false tag:("service:ipirangatop")' },
