@@ -2,6 +2,7 @@ export type Monitor = {
   id: number;
   name: string;
   overall_state?: string;
+  overall_state_modified: number;
   status?: string;
 };
 
@@ -27,9 +28,15 @@ export type ServiceStatus = {
   title: string;
   status: "OK" | "WARN" | "ALERT";
   alertCount: number;
+  statusSince: number | null;
 };
 
 export type SectionResponse = {
+  title: string;
+  services: ServiceStatus[];
+};
+
+export type Section = {
   title: string;
   services: ServiceStatus[];
 };

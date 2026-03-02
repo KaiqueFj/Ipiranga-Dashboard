@@ -4,15 +4,41 @@ import { Monitor, OrgConfig, SectionResponse, ServiceStatus } from "../types/typ
 function calculateStatus(monitors: Monitor[]): {
   status: "OK" | "WARN" | "ALERT";
   alertCount: number;
+  statusSince: number | null;
 } {
-  const states = monitors.map((m) => m.overall_state ?? m.status ?? "OK");
+  if (!monitors.length) {
+    return { status: "OK", alertCount: 0, statusSince: null };
+  }
 
-  const alertCount = states.filter((s) => s === "Alert").length;
-  const hasWarn = states.includes("Warn");
+  const alertMonitors = monitors.filter((m) => (m.overall_state ?? m.status) === "Alert");
 
-  if (alertCount > 0) return { status: "ALERT", alertCount };
-  if (hasWarn) return { status: "WARN", alertCount: 0 };
-  return { status: "OK", alertCount: 0 };
+  const warnMonitors = monitors.filter((m) => (m.overall_state ?? m.status) === "Warn");
+
+  if (alertMonitors.length > 0) {
+    const oldestAlert = alertMonitors.reduce((prev, curr) =>
+      curr.overall_state_modified < prev.overall_state_modified ? curr : prev,
+    );
+
+    return {
+      status: "ALERT",
+      alertCount: alertMonitors.length,
+      statusSince: oldestAlert.overall_state_modified,
+    };
+  }
+
+  if (warnMonitors.length > 0) {
+    const oldestWarn = warnMonitors.reduce((prev, curr) =>
+      curr.overall_state_modified < prev.overall_state_modified ? curr : prev,
+    );
+
+    return {
+      status: "WARN",
+      alertCount: warnMonitors.length,
+      statusSince: oldestWarn.overall_state_modified,
+    };
+  }
+
+  return { status: "OK", alertCount: 0, statusSince: null };
 }
 
 export async function buildSections(config: OrgConfig): Promise<SectionResponse[]> {
@@ -22,13 +48,14 @@ export async function buildSections(config: OrgConfig): Promise<SectionResponse[
         section.services.map(async (serviceDef) => {
           const monitors = await searchMonitors(serviceDef.query, config.apiKey, config.appKey);
 
-          const { status, alertCount } = calculateStatus(monitors);
+          const { status, alertCount, statusSince } = calculateStatus(monitors);
 
           return {
             service: serviceDef.service,
             title: serviceDef.title,
             status,
             alertCount,
+            statusSince,
           };
         }),
       );
