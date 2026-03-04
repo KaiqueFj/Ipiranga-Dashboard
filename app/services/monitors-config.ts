@@ -2,13 +2,17 @@ import { OrgConfig, SectionDefinition } from "../types/type";
 
 const SECTIONS_CORP: SectionDefinition[] = [
   {
-    sectionTitle: "Overview - Serviços Críticos (ACN Corporativo)",
+    sectionTitle: "Serviços Corporativos",
     services: [
-      { service: "JD Edwards", title: "JDE", query: '"[Ipiranga]" muted:false tag:("service:jde")' },
+      { service: "JD Edwards", title: "JDE - Em construção", query: '"[Ipiranga]" muted:false tag:("service:jde")' },
       { service: "Siebel", title: "Siebel", query: '"[Ipiranga]" muted:false tag:("service:siebel")' },
       { service: "APCO", title: "APCO", query: '"[Ipiranga]" muted:false tag:("service:apco")' },
       { service: "Aprix", title: "Aprix", query: '"[Ipiranga]" muted:false tag:("service:aprix")' },
-      { service: "Autobasi", title: "Autobasi", query: '"[Ipiranga]" muted:false tag:("service:autobasi")' },
+      {
+        service: "Autobasi",
+        title: "Autobasi - construção",
+        query: '"[Ipiranga]" muted:false tag:("service:autobasi")',
+      },
       {
         service: "App do motorista",
         title: "App do motorista",
@@ -18,7 +22,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
     ],
   },
   {
-    sectionTitle: "Overview - Plataformas e Serviços digitais",
+    sectionTitle: "Plataformas e Serviços digitais",
     services: [
       { service: "Portal Ipiranga", title: "PortalRI", query: '"[Ipiranga]" muted:false tag:("service:PortalRi")' },
       { service: "Ipiranga Top", title: "Ipiranga Top", query: '"[Ipiranga]" muted:false tag:("service:ipirangatop")' },

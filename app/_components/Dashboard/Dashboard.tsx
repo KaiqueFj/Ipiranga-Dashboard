@@ -11,7 +11,6 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function DashboardPage() {
   const [org, setOrg] = useState<"corp" | "digital">("corp");
-  const [time, setTime] = useState("");
   const [autoRotate, setAutoRotate] = useState(true);
 
   const { data, error } = useSWR<Section[]>(`/api/monitors?org=${org}`, fetcher, {
@@ -19,13 +18,6 @@ export default function DashboardPage() {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date().toLocaleTimeString("pt-BR", { hour12: false }));
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     if (!autoRotate) return;
@@ -37,7 +29,7 @@ export default function DashboardPage() {
 
   if (error) {
     return (
-      <div className="h-screen flex items-center justify-center bg-slate-950 text-red-500 text-xl">
+      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-red-500 text-xl">
         Erro ao carregar o monitoramento
       </div>
     );
@@ -46,22 +38,24 @@ export default function DashboardPage() {
   const isLoading = !data && !error;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100 flex flex-col">
-      <Header org={org} setOrg={setOrg} setAutoRotate={setAutoRotate} time={time} />
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+      <Header org={org} setOrg={setOrg} setAutoRotate={setAutoRotate} />
 
       <Summary sections={data ?? []} />
 
-      <div className="flex-1 px-8 md:px-20 pb-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+      {/* MAIN CONTENT */}
+      <main className="flex-1 overflow-hidden w-full max-w-7xl mx-auto px-4 md:px-8 pb-4 grid grid-cols-1 md:grid-cols-2 gap-6">
         {isLoading
-          ? Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-48 rounded-2xl bg-slate-800 animate-pulse" />
+          ? Array.from({ length: 2 }).map((_, i) => (
+              <div key={i} className="h-56 rounded-2xl bg-slate-800 animate-pulse" />
             ))
           : data?.map((section) => <SectionCard key={section.title} section={section} />)}
-      </div>
+      </main>
 
-      <div className="text-right text-sm text-slate-400 px-16 py-6 border-t border-slate-800">
+      {/* FOOTER */}
+      <footer className="text-center text-xs sm:text-sm text-slate-400 py-6 border-t border-slate-800">
         Atualização automática a cada 1 minuto
-      </div>
+      </footer>
     </div>
   );
 }

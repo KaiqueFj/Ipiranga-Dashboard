@@ -13,10 +13,12 @@ export default function Summary({ sections }: Props) {
   const totalAlert = allServices.filter((s) => s.status === "ALERT").length;
 
   return (
-    <div className="px-8 md:px-16 py-8 flex flex-col md:flex-row gap-6 text-center">
-      <SummaryCard value={totalOK} label="OK" color="emerald" />
-      <SummaryCard value={totalWarn} label="Warning" color="amber" />
-      <SummaryCard value={totalAlert} label="Crítico" color="red" />
+    <div className="w-full max-w-7xl mx-auto px-4 md:px-8 py-4">
+      <div className="grid grid-cols-3 gap-4">
+        <SummaryCard value={totalOK} label="OK" color="emerald" />
+        <SummaryCard value={totalWarn} label="Warning" color="amber" />
+        <SummaryCard value={totalAlert} label="Crítico" color="red" />
+      </div>
     </div>
   );
 }

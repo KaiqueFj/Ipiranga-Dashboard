@@ -26,9 +26,11 @@ export default function SummaryCard({ value, label, color }: Props) {
   const s = styles[color];
 
   return (
-    <div className={`flex-1 ${s.bg} border ${s.border} rounded-2xl py-6 shadow-lg`}>
-      <p className={`text-5xl font-extrabold ${s.text}`}>{value}</p>
-      <p className="text-xs uppercase tracking-widest opacity-70 mt-2">{label}</p>
+    <div
+      className={`flex-1 ${s.bg} text-center border ${s.border} rounded-lg md:rounded-2xl py-3 md:py-5 px-4 shadow-lg`}
+    >
+      <p className={`text-3xl sm:text-4xl md:text-5xl font-extrabold ${s.text}`}>{value}</p>
+      <p className="text-[10px] sm:text-xs uppercase tracking-widest opacity-70 mt-2">{label}</p>
     </div>
   );
 }

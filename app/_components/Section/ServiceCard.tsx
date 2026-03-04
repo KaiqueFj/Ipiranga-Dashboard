@@ -8,17 +8,17 @@ type Props = {
 
 export default function ServiceCard({ service }: Props) {
   return (
-    <div className="flex flex-col py-6 rounded-xl bg-slate-900/80 border border-slate-800 shadow-lg items-center text-center space-y-6">
-      <p className="text-2xl md:text-3xl font-semibold tracking-wide">{service.title}</p>
+    <div className="flex flex-col p-4 rounded-lg bg-slate-900/80 border border-slate-800 shadow-lg items-center text-center space-y-3">
+      <p className="text-sm md:text-base font-semibold tracking-wide line-clamp-2">{service.title}</p>
 
       {getIcon(service.status)}
 
-      <div className="text-lg text-slate-400 space-y-1">
+      <div className="text-xs md:text-sm text-slate-400 space-y-1">
         <p>{service.alertCount} alert(s)</p>
 
         {service.status !== "OK" && service.statusSince && (
-          <p className="text-sm text-white">
-            {service.status === "ALERT" ? "Crítico há" : "Warning há"}{" "}
+          <p className="text-white">
+            {service.status === "ALERT" ? "Crítico a " : "Warning a"}{" "}
             <span className="font-semibold">{formatDuration(service.statusSince)}</span>
           </p>
         )}
