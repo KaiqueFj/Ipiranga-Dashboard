@@ -14,6 +14,7 @@ export async function searchMonitors(query: string, apiKey: string, appKey: stri
   });
 
   if (!response.ok) {
+    console.log(response);
     throw new Error("Failed to fetch monitors from Datadog");
   }
 

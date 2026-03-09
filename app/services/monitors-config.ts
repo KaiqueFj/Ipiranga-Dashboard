@@ -4,28 +4,40 @@ const SECTIONS_CORP: SectionDefinition[] = [
   {
     sectionTitle: "Serviços Corporativos",
     services: [
-      { service: "JD Edwards", title: "JDE - Em construção", query: '"[Ipiranga]" muted:false tag:("service:jde")' },
-      { service: "Siebel", title: "Siebel", query: '"[Ipiranga]" muted:false tag:("service:siebel")' },
-      { service: "APCO", title: "APCO", query: '"[Ipiranga]" muted:false tag:("service:apco")' },
-      { service: "Aprix", title: "Aprix", query: '"[Ipiranga]" muted:false tag:("service:aprix")' },
+      { service: "JD Edwards", title: "JDE", query: '(priority:(p1 OR p2) AND jde AND tag:("dashboard:site"))' },
       {
-        service: "Autobasi",
-        title: "Autobasi - construção",
-        query: '"[Ipiranga]" muted:false tag:("service:autobasi")',
+        service: "Siebel",
+        title: "Siebel",
+        query: `
+            ( tag:("plataforma:ipiranga") OR tag:("plataforma:ipiranga-corporativo") OR tag:("plataforma:ipiranga-marketing")) AND siebel AND tag:("dashboard:site")`,
       },
+      {
+        service: "APCO",
+        title: "APCO",
+        query: `(tag:("plataforma:ipiranga") OR tag:("plataforma:ipiranga-corporativo") OR tag:("plataforma:ipiranga-marketing")) AND APCO AND tag:("dashboard:site")`,
+      },
+      { service: "Aprix", title: "Aprix", query: 'tag:("service:aprix") tag:("dashboard:site")' },
       {
         service: "App do motorista",
         title: "App do motorista",
         query: `"[Ipiranga]" muted:false tag:("projeto:appMotorista")`,
       },
-      { service: "Chatbot", title: "Chatbot", query: '"[Ipiranga]" muted:false tag:("service:ChatBOT")' },
+      {
+        service: "Autobasi",
+        title: "Autobasi - construção",
+        query: '"[Ipiranga]" muted:false tag:("service:autobasi")',
+      },
     ],
   },
   {
-    sectionTitle: "Plataformas e Serviços digitais",
+    sectionTitle: "Plataformas de Serviços digitais",
     services: [
-      { service: "Portal Ipiranga", title: "PortalRI", query: '"[Ipiranga]" muted:false tag:("service:PortalRi")' },
-      { service: "Ipiranga Top", title: "Ipiranga Top", query: '"[Ipiranga]" muted:false tag:("service:ipirangatop")' },
+      {
+        service: "Portal Ipiranga",
+        title: "PortalRI",
+        query: 'portalri priority:(p1 OR p2) AND muted:false tag:("dashboard:site")',
+      },
+      { service: "Ipiranga Top", title: "Ipiranga Top", query: 'tag:("service:ipirangatop") tag:("dashboard:site")' },
       { service: "Clube vip", title: "Clube vip", query: '"[Ipiranga]" muted:false tag:("service:clube vip")' },
       {
         service: "Site de marca",

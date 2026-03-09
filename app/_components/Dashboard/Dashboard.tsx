@@ -16,6 +16,7 @@ export default function DashboardPage() {
   });
 
   if (error) {
+    console.log(error);
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-950 text-red-500 text-xl">
         Erro ao carregar o monitoramento
@@ -25,7 +26,12 @@ export default function DashboardPage() {
 
   const isLoading = !data && !error;
 
+  console.log(data);
+  console.log(error);
+
   const sections = data ?? [];
+
+  console.log(sections);
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100">
