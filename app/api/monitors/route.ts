@@ -6,8 +6,16 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const org = searchParams.get("org") || "corp";
 
-    const data = await getMonitorsByOrg(org);
+    if (org === "all") {
+      const [corp, digital] = await Promise.all([getMonitorsByOrg("corp"), getMonitorsByOrg("digital")]);
 
+      return NextResponse.json({
+        corp,
+        digital,
+      });
+    }
+
+    const data = await getMonitorsByOrg(org);
     return NextResponse.json(data);
   } catch (error) {
     console.error("Monitor route error:", error);

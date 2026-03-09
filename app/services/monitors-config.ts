@@ -32,35 +32,26 @@ const SECTIONS_CORP: SectionDefinition[] = [
         title: "Site da marca",
         query: '"[Ipiranga]" muted:false tag:("service:site da marca")',
       },
-    ],
-  },
-];
-
-/* ===========================
-   DIGITAL ORG
-=========================== */
-
-const SECTIONS_DIGITAL: SectionDefinition[] = [
-  {
-    sectionTitle: "Overview - Serviços Digitais",
-    services: [
       {
         service: "Capturas e Autorização de pagamento",
         title: "Transacional Kmv",
         query:
           'priority:(p1 OR p2) tag:("impacto:Meios de pagamento" OR "categoria:queda-transacional" OR "categoria:queda-api" OR "impacto:Login") tag:("service:Capturas-Autorização-de-pagamento")',
+        orgOverride: "digital",
       },
       {
         service: "Pedido Digitado",
         title: "Transacional Conecta",
         query:
           '(priority:(p1 OR p2) tag:("impacto:Meios de pagamento" OR "categoria:queda-transacional" OR "categoria:queda-api" OR "impacto:Login") tag:("plataforma:conecta") AND tag:"service:Pedido-digitado")',
+        orgOverride: "digital",
       },
       {
         service: "Abastecimento de profrotas",
         title: "Transacional Profrotas",
         query:
           '(priority:(p1 OR p2) tag:("impacto:Meios de pagamento" OR "categoria:queda-transacional" OR "categoria:queda-api" OR "impacto:Login") tag:"plataforma:Profrotas" AND tag:"contexto:abastecimento-profrotas")',
+        orgOverride: "digital",
       },
     ],
   },
@@ -79,6 +70,6 @@ export const ORG_CONFIG: Record<string, OrgConfig> = {
   digital: {
     apiKey: process.env.DD_DIGITAL_API_KEY!,
     appKey: process.env.DD_DIGITAL_APP_KEY!,
-    sections: SECTIONS_DIGITAL,
+    sections: [],
   },
 };

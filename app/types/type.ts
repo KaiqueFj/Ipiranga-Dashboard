@@ -10,6 +10,7 @@ export type ServiceDefinition = {
   service: string;
   title: string;
   query: string;
+  orgOverride?: "digital";
 };
 
 export type SectionDefinition = {

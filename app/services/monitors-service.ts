@@ -1,5 +1,6 @@
 import { searchMonitors } from "../repository/monitors-repository";
 import { Monitor, OrgConfig, SectionResponse, ServiceStatus } from "../types/type";
+import { ORG_CONFIG } from "./monitors-config";
 
 function calculateStatus(monitors: Monitor[]): {
   status: "OK" | "WARN" | "ALERT";
@@ -46,8 +47,9 @@ export async function buildSections(config: OrgConfig): Promise<SectionResponse[
     config.sections.map(async (section) => {
       const services: ServiceStatus[] = await Promise.all(
         section.services.map(async (serviceDef) => {
-          const monitors = await searchMonitors(serviceDef.query, config.apiKey, config.appKey);
+          const credentials = serviceDef.orgOverride === "digital" ? ORG_CONFIG.digital : config;
 
+          const monitors = await searchMonitors(serviceDef.query, credentials.apiKey, credentials.appKey);
           const { status, alertCount, statusSince } = calculateStatus(monitors);
 
           return {
