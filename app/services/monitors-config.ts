@@ -23,9 +23,9 @@ const SECTIONS_CORP: SectionDefinition[] = [
         query: `"[Ipiranga]" muted:false tag:("projeto:appMotorista")`,
       },
       {
-        service: "Autobasi",
-        title: "Autobasi - construção",
-        query: '"[Ipiranga]" muted:false tag:("service:autobasi")',
+        service: "Chatbot",
+        title: "Chatbot",
+        query: `"[Ipiranga]"  tag:("service:ChatBot")`,
       },
     ],
   },
@@ -43,6 +43,11 @@ const SECTIONS_CORP: SectionDefinition[] = [
         service: "Site de marca",
         title: "Site da marca",
         query: '"[Ipiranga]" muted:false tag:("service:site da marca")',
+      },
+      {
+        service: "Automações Ipiranga",
+        title: "Automações Ipiranga",
+        query: '"[Ipiranga]" AND robopix tag:("dashboard:site")',
       },
       {
         service: "Capturas e Autorização de pagamento",
