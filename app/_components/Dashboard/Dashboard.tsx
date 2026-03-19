@@ -33,7 +33,7 @@ export default function DashboardPage() {
 
       <Summary sections={sections} />
 
-      <main className="flex-1 overflow-hidden w-full max-w-7xl mx-auto px-4 md:px-8 pb-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <main className="flex-1 overflow-hidden w-full   px-4 md:px-8 pb-4 grid grid-cols-1 md:grid-cols-3 gap-6">
         {isLoading
           ? Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="h-56 rounded-2xl bg-slate-800 animate-pulse" />

@@ -2,12 +2,7 @@ import Image from "next/image";
 
 const ImageInfo = {
   corp: {
-    src: [
-      "https://i.postimg.cc/vBFWhsgn/ipiranga-new-coon-redimensionado-para-pequeno-(1).jpg",
-      "https://i.postimg.cc/GhdVcxk8/logo-km-de-vantagens-0-DIS6g.png",
-      "https://i.postimg.cc/prYSfmtL/banner-flutuante-4-1.png",
-      "https://i.postimg.cc/HWQFDh71/images-1.png",
-    ],
+    src: ["https://i.postimg.cc/vBFWhsgn/ipiranga-new-coon-redimensionado-para-pequeno-(1).jpg"],
   },
 };
 

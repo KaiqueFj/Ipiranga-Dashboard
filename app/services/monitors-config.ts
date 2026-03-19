@@ -2,7 +2,7 @@ import { OrgConfig, SectionDefinition } from "../types/type";
 
 const SECTIONS_CORP: SectionDefinition[] = [
   {
-    sectionTitle: "Serviços Corporativos",
+    sectionTitle: "Sistemas Corporativos",
     services: [
       { service: "JD Edwards", title: "JDE", query: '(priority:(p1 OR p2) AND jde AND tag:("dashboard:site"))' },
       {
@@ -30,7 +30,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
     ],
   },
   {
-    sectionTitle: "Plataformas de Serviços digitais",
+    sectionTitle: "Produtos digitais",
     services: [
       {
         service: "Portal Ipiranga",
@@ -49,6 +49,12 @@ const SECTIONS_CORP: SectionDefinition[] = [
         title: "Automações Ipiranga",
         query: '"[Ipiranga]" AND robopix tag:("dashboard:site")',
       },
+    ],
+  },
+
+  {
+    sectionTitle: "Fluxos de negócio",
+    services: [
       {
         service: "Capturas e Autorização de pagamento",
         title: "Transacional Kmv",
