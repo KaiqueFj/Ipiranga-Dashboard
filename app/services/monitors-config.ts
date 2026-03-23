@@ -4,7 +4,11 @@ const SECTIONS_CORP: SectionDefinition[] = [
   {
     sectionTitle: "Sistemas Corporativos",
     services: [
-      { service: "JD Edwards", title: "JDE", query: '(priority:(p1 OR p2) AND jde AND tag:("dashboard:site"))' },
+      {
+        service: "JD Edwards",
+        title: "JDE (Em construção)",
+        query: '(priority:(p1 OR p2) AND jde AND tag:("dashboard:site"))',
+      },
       {
         service: "Siebel",
         title: "Siebel",
@@ -19,7 +23,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
       { service: "Aprix", title: "Aprix", query: 'tag:("service:aprix") tag:("dashboard:site")' },
       {
         service: "App do motorista",
-        title: "App do motorista",
+        title: "App do motorista (em construção)",
         query: `"[Ipiranga]" muted:false tag:("projeto:appMotorista")`,
       },
       {
