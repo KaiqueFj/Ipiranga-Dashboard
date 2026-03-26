@@ -51,7 +51,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
       {
         service: "Automações Ipiranga",
         title: "Automações Ipiranga",
-        query: '"[Ipiranga]" AND robopix tag:("dashboard:site")',
+        query: '"[Ipiranga]" AND robopix priority:(p1 OR p2) tag:("dashboard:site")',
       },
     ],
   },
