@@ -10,6 +10,7 @@ export type ServiceDefinition = {
   service: string;
   title: string;
   query: string;
+  dashboardLink?: string;
   orgOverride?: "digital";
 };
 
@@ -30,6 +31,7 @@ export type ServiceStatus = {
   status: "OK" | "WARN" | "ALERT";
   alertCount: number;
   statusSince: number | null;
+  dashboardLink: string | null;
 };
 
 export type SectionResponse = {

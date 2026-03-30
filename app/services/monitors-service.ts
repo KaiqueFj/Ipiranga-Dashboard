@@ -58,6 +58,7 @@ export async function buildSections(config: OrgConfig): Promise<SectionResponse[
             status,
             alertCount,
             statusSince,
+            dashboardLink: serviceDef.dashboardLink ?? null,
           };
         }),
       );
