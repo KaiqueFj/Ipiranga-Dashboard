@@ -28,12 +28,11 @@ export default function DashboardPage() {
   const sections = data ?? [];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+    <div className="h-screen flex flex-col bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100">
       <Header />
-
       <Summary sections={sections} />
 
-      <main className="flex-1 overflow-hidden w-full   px-4 md:px-8 pb-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <main className="flex-1 min-h-0 w-full px-4 md:px-8 pb-4 grid grid-cols-1 md:grid-cols-3 gap-6">
         {isLoading
           ? Array.from({ length: 2 }).map((_, i) => (
               <div key={i} className="h-56 rounded-2xl bg-slate-800 animate-pulse" />
