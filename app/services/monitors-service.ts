@@ -55,9 +55,9 @@ export async function buildSections(config: OrgConfig): Promise<SectionResponse[
           return {
             service: serviceDef.service,
             title: serviceDef.title,
-            status,
-            alertCount,
-            statusSince,
+            status: serviceDef.maintenance ? "MAINTENANCE" : status,
+            alertCount: serviceDef.maintenance ? 0 : alertCount,
+            statusSince: serviceDef.maintenance ? null : statusSince,
             dashboardLink: serviceDef.dashboardLink ?? null,
           };
         }),

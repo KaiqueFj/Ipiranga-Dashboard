@@ -11,6 +11,7 @@ export type ServiceDefinition = {
   title: string;
   query: string;
   dashboardLink?: string;
+  maintenance?: boolean;
   orgOverride?: "digital";
 };
 
@@ -28,7 +29,7 @@ export type OrgConfig = {
 export type ServiceStatus = {
   service: string;
   title: string;
-  status: "OK" | "WARN" | "ALERT";
+  status: "OK" | "WARN" | "ALERT" | "MAINTENANCE";
   alertCount: number;
   statusSince: number | null;
   dashboardLink: string | null;

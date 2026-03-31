@@ -21,7 +21,7 @@ export default function ServiceCard({ service }: Props) {
         {/* Title */}
         <p
           className="text-sm md:text-base text-center font-semibold tracking-wide text-white 
-          line-clamp-2 group-hover:text-blue-400 transition-colors"
+        wrap-break-word leading-snug group-hover:text-blue-400 transition-colors"
         >
           {service.title}
         </p>

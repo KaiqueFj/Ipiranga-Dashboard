@@ -8,6 +8,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
         service: "JD Edwards",
         title: "JDE (Em construção)",
         query: '(priority:(p1 OR p2) AND jde AND tag:("dashboard:site"))',
+        maintenance: true,
         dashboardLink:
           "https://app.datadoghq.com/dashboard/r3a-f95-2zx?fromUser=false&refresh_mode=sliding&from_ts=1774868183061&to_ts=1774882583061&live=true",
       },
@@ -37,6 +38,8 @@ const SECTIONS_CORP: SectionDefinition[] = [
         service: "App do motorista",
         title: "App do motorista (em construção)",
         query: `"[Ipiranga]" muted:false tag:("projeto:appMotorista")`,
+        maintenance: true,
+
         dashboardLink:
           "https://app.datadoghq.com/dashboard/vtw-a26-634?fromUser=false&refresh_mode=sliding&from_ts=1774879141433&to_ts=1774882741433&live=true",
       },
