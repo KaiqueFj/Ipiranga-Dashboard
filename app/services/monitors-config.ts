@@ -10,7 +10,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
         query: '(priority:(p1 OR p2) AND jde AND tag:("dashboard:site"))',
         maintenance: true,
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/r3a-f95-2zx?fromUser=false&refresh_mode=sliding&from_ts=1774868183061&to_ts=1774882583061&live=true",
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-d02b8325d79af5d4d91e7f9caff3e823?fromUser=false&refresh_mode=sliding&tpl_var_Endpoint%5B0%5D=%2A&from_ts=1775122750377&to_ts=1775137150377&live=true",
       },
       {
         service: "Siebel",
@@ -18,21 +18,21 @@ const SECTIONS_CORP: SectionDefinition[] = [
         query: `
             ( tag:("plataforma:ipiranga") OR tag:("plataforma:ipiranga-corporativo") OR tag:("plataforma:ipiranga-marketing")) AND siebel AND tag:("dashboard:site")`,
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/3ic-6gh-68e/ipiranga-overview-siebel?fromUser=false&refresh_mode=sliding&from_ts=1774879033207&to_ts=1774882633207&live=true",
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-45ad9c6441a3d69fbeb77064fd2bb8c1",
       },
       {
         service: "APCO",
         title: "APCO",
         query: `(tag:("plataforma:ipiranga") OR tag:("plataforma:ipiranga-corporativo") OR tag:("plataforma:ipiranga-marketing")) AND APCO AND tag:("dashboard:site")`,
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/c8a-eid-guq/ipiranga-boc-overview-fluxo-apco-v2?fromUser=false&refresh_mode=sliding&from_ts=1774879068299&to_ts=1774882668299&live=true",
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-2de33b5115a960e731ca4fff619bcd34",
       },
       {
         service: "Aprix",
         title: "Aprix",
         query: 'tag:("service:aprix") tag:("dashboard:site")',
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/5y2-mpi-bsf?fromUser=true&refresh_mode=sliding&from_ts=1767890597823&to_ts=1767976997823&live=true",
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-bfc8ba14a2c471818003820c84db830e",
       },
       {
         service: "App do motorista",
@@ -48,7 +48,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
         title: "Chatbot",
         query: `"[Ipiranga]" status:ok tag:("service:ChatBot")`,
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/g8z-hz2-5t9/ipiranga-overview-chat-bot?fromUser=false&refresh_mode=sliding&from_ts=1774879185440&to_ts=1774882785440&live=true",
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-b16d611f346a15ede8c042396d7f3577",
       },
     ],
   },
@@ -60,32 +60,35 @@ const SECTIONS_CORP: SectionDefinition[] = [
         title: "PortalRI",
         query: 'portalri priority:(p1 OR p2) AND muted:false tag:("dashboard:site")',
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/ptx-yqn-cyq/ipiranga-boc-overview-fluxo-portal-ri-v2?fromUser=false&refresh_mode=sliding&from_ts=1768329035639&to_ts=1768332635639&live=true",
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-7e528c273ae899a580a04401590570d5",
       },
       {
         service: "Ipiranga Top",
         title: "Ipiranga Top",
         query: 'tag:("service:ipirangatop") tag:("dashboard:site")',
-        dashboardLink: "https://app.datadoghq.com/dashboard/jqc-e5d-zvx/ipiranga-ipiranga-top",
+        dashboardLink:
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-24abe02111855faf2427320d03c532db",
       },
       {
         service: "Clube vip",
         title: "Clube vip",
         query: '"[Ipiranga]" status:ok muted:false tag:("service:clube vip")',
-        dashboardLink: "https://app.datadoghq.com/dashboard/z4w-6ir-7zg/ipiranga-clube-vip",
+        dashboardLink:
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-45a9e55addf23ae40d1d4e807b61a043",
       },
       {
         service: "Site de marca",
         title: "Site da marca",
         query: '"[Ipiranga]" muted:false tag:("service:site da marca")',
-        dashboardLink: "https://app.datadoghq.com/dashboard/fsg-7c9-h8c/ipiranga-site-da-marca",
+        dashboardLink:
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-364962de2f039b27b6dccb545dfa4267",
       },
       {
         service: "Automações Ipiranga",
         title: "Automações Ipiranga",
         query: '"[Ipiranga]" AND robopix priority:(p1 OR p2) tag:("dashboard:site")',
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/yk8-f23-786/ipiranga-robs-e-automaes-overview-geral?fromUser=false&refresh_mode=sliding&from_ts=1774868551224&to_ts=1774882951224&live=true",
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-81a57921e6b26fadb6b8b5914d0410cb",
       },
     ],
   },
@@ -100,7 +103,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
           'priority:(p1 OR p2) tag:("impacto:Meios de pagamento" OR "categoria:queda-transacional" OR "categoria:queda-api" OR "impacto:Login") tag:("service:Capturas-Autorização-de-pagamento")',
         orgOverride: "digital",
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/3q6-kjt-n46/kmv-boc---overview-servios-crticos-e-infraestrutura-relacionada?fromUser=false&refresh_mode=sliding&from_ts=1748892871197&to_ts=1748896471197&live=true",
+          "https://p.datadoghq.com/sb/1c68d43a-33fc-11ef-8efb-fab1c81556b3-e17b395584de0c692feab63d2a3fa6ef",
       },
 
       {
@@ -110,7 +113,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
           '(priority:(p1 OR p2) tag:("impacto:Meios de pagamento" OR "categoria:queda-transacional" OR "categoria:queda-api" OR "impacto:Login") tag:"plataforma:Profrotas" AND tag:"contexto:abastecimento-profrotas")',
         orgOverride: "digital",
         dashboardLink:
-          "https://app.datadoghq.com/dashboard/bcj-fvx-w5a/pr-frotas-boc-overview-servios-crticos-e-infraestrutura-relacionada?fromUser=false&refresh_mode=sliding&from_ts=1748614559279&to_ts=1748628959279&live=true",
+          "https://p.datadoghq.com/sb/1c68d43a-33fc-11ef-8efb-fab1c81556b3-4f35f3776e61542fc54d038e7f3dda70",
       },
     ],
   },
