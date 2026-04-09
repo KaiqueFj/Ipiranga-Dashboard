@@ -100,7 +100,7 @@ const SECTIONS_CORP: SectionDefinition[] = [
         service: "Capturas e Autorização de pagamento",
         title: "Transacional Kmv",
         query:
-          'priority:(p1 OR p2) tag:("impacto:Meios de pagamento" OR "categoria:queda-transacional" OR "categoria:queda-api" OR "impacto:Login") tag:("service:Capturas-Autorização-de-pagamento")',
+          'priority:(p1 OR p2) tag:("impacto:Meios de pagamento" OR "categoria:queda-transacional" OR "categoria:queda-api" OR "impacto:Login" OR "categoria:degradação") tag:("service:Capturas-Autorização-de-pagamento")',
         orgOverride: "digital",
         dashboardLink:
           "https://p.datadoghq.com/sb/1c68d43a-33fc-11ef-8efb-fab1c81556b3-e17b395584de0c692feab63d2a3fa6ef",
