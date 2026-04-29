@@ -9,7 +9,7 @@ type Props = {
 
 export default function ServiceCard({ service }: Props) {
   return (
-    <Link href={service.dashboardLink ?? "#"} className="group block">
+    <Link href={"#"} className="group block">
       <div
         className="flex flex-col justify-between h-full p-5 rounded-2xl 
         bg-slate-900/70 border border-slate-800 
