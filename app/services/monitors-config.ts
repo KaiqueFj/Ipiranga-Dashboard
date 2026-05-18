@@ -8,7 +8,6 @@ const SECTIONS_CORP: SectionDefinition[] = [
         service: "JD Edwards",
         title: "JDE (Em construção)",
         query: '(priority:(p1 OR p2) AND jde AND tag:("dashboard:site"))',
-        maintenance: true,
         dashboardLink:
           "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-d02b8325d79af5d4d91e7f9caff3e823?fromUser=false&refresh_mode=sliding&tpl_var_Endpoint%5B0%5D=%2A&from_ts=1775122750377&to_ts=1775137150377&live=true",
       },
