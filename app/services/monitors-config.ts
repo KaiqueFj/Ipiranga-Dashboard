@@ -89,6 +89,13 @@ const SECTIONS_CORP: SectionDefinition[] = [
         dashboardLink:
           "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-81a57921e6b26fadb6b8b5914d0410cb",
       },
+      {
+        service: "Sefaz",
+        title: "Sefaz",
+        query: '"[SEFAZ] [StatusPage]"  tag:("dashboard:site")',
+        dashboardLink:
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-81a57921e6b26fadb6b8b5914d0410cb",
+      },
     ],
   },
 
