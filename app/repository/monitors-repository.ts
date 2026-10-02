@@ -19,6 +19,7 @@ export async function searchMonitors(query: string, apiKey: string, appKey: stri
   }
 
   const result = await response.json();
+  console.log(result);
 
   return result.monitors || [];
 }

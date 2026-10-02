@@ -89,6 +89,22 @@ const SECTIONS_CORP: SectionDefinition[] = [
         dashboardLink:
           "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-81a57921e6b26fadb6b8b5914d0410cb",
       },
+
+      {
+        service: "Conectividade Matriz SP",
+        title: "Conectividade Matriz SP",
+        query: '"[Telecom] Transito SDWAN RJ x SWITCH CORE"',
+        dashboardLink:
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-81a57921e6b26fadb6b8b5914d0410cb",
+      },
+
+      {
+        service: "Conectividade Matriz RJ",
+        title: "Conectividade Matriz RJ",
+        query: '"[Telecom] Transito SDWAN RJ x SWITCH CORE"',
+        dashboardLink:
+          "https://p.datadoghq.com/sb/e6ba99a2-3062-11ed-84b0-da7ad0900002-81a57921e6b26fadb6b8b5914d0410cb",
+      },
     ],
   },
 
